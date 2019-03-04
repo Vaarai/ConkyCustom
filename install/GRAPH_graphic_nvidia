@@ -1,0 +1,1 @@
+tonumber(conky_parse("${nvidia temp}"))
