@@ -1,3 +1,8 @@
+-- ###Default settings###
+    default_city = "Nimes"
+    default_country_code = "FR"
+    default_graphic_sensors_name = "pch_cannonlake-virtual-0"
+
 -- ###Openweather settings###
     api_key = "81baa8fffa0ec25a9a2d825c57d4adfe"
 

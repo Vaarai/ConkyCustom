@@ -264,13 +264,18 @@ end
 function conky_TEMP_meter (cx_str, cy_str)
     local cx = tonumber(cx_str)
     local cy = tonumber(cy_str)
-
     local cpu_temp = tonumber(conky_parse("${acpitemp}"))
-    local sh_output = io.popen("sensors radeon-pci-0100 | grep temp | awk '{ gsub(\"+\",\"\"); split($2,var,\"°\"); print var[1]; }'")
+
+    local sh_output = io.popen("nvidia-smi --format=csv,noheader,nounits --query-gpu=temperature.gpu")
     local sh_temp = sh_output:read("*a")
     local gpu_temp = tonumber(sh_temp)
     sh_output:close()
-
+    if gpu_temp == nil then
+        local sh_output = io.popen("sensors " .. default_graphic_sensors_name .. " | grep temp | awk '{ gsub(\"+\",\"\"); split($2,var,\"°\"); print var[1]; }'")
+        local sh_temp = sh_output:read("*a")
+        gpu_temp = tonumber(sh_temp)
+        sh_output:close()
+    end
     local therm_spacing = size_coef*18
 
     --------------------------------------------------------------------------------------

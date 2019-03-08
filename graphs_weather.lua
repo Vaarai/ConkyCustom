@@ -13,6 +13,11 @@ function conky_WEATHER_forecast (cx_str, cy_str)
 	city = getLocation('city')
 	country_code = getLocation('cc')
 
+	if city == "" then if country_code == "" then
+		city = default_city
+		country_code = default_country_code
+	end end
+
 	print("=========" .. city .. " + " .. country_code)
 
 	--Draw today weather icon  

@@ -27,7 +27,7 @@ conky.config = {
 	uppercase = false,
 
 	out_to_console = no,
-	lua_load = 'start_conky_weather.lua',
+	lua_load = "$HOME/.conky/start_conky_weather.lua",
 	lua_draw_hook_pre = 'start_widgets',
 };
 
